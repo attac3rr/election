@@ -3,233 +3,137 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#17324D">
 <title>Вибори Президента України · Kherson RP</title>
 <style>
-:root{color-scheme:light;--navy:#17324d;--navy-dark:#10263b;--ink:#202a35;--muted:#586573;--paper:#f4f5f3;--white:#fff;--line:#d9dee3;--line-strong:#7e8e9b;--gold:#d9b44a;--selected:#f0f4f8;--green:#246346;--green-bg:#edf5ef;--red:#9e302b;--red-bg:#fcf0ee}
-*{box-sizing:border-box}[hidden]{display:none!important}
-body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
-button{font:inherit;cursor:pointer}h1,h2,h3,p{margin:0}
-:focus-visible{outline:3px solid var(--navy);outline-offset:3px}
-.container{width:min(calc(100% - 40px),1120px);margin-inline:auto}
-.site-header{background:var(--navy);color:var(--white);border-top:3px solid var(--gold)}
-.header-inner{min-height:84px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-.brand-name{display:block;font-size:21px;font-weight:650}.brand-caption{display:block;margin-top:4px;font-size:13px;color:#d2dce5}
-.header-note{color:#d2dce5;font-size:13px;text-align:right}
-main{padding-block:44px 56px}
-.eyebrow{color:var(--muted);font-size:12px;font-weight:650;letter-spacing:1.1px;text-transform:uppercase}
-.title-row{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:12px}
-h1{font-size:clamp(27px,3.3vw,40px);font-weight:650;line-height:1.18;letter-spacing:-1px}
-.round-tag{white-space:nowrap;font-size:13px;font-weight:600;padding:5px 11px;border:1px solid var(--line-strong);border-radius:4px;color:var(--navy)}
-.intro{margin-top:14px;color:var(--muted);max-width:700px}
-.schedule{margin-top:32px;border-block:1px solid var(--line);padding-block:18px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-.phase{display:inline-flex;align-items:center;gap:9px;color:var(--navy);font-size:14px;font-weight:600}
-.dot{width:7px;height:7px;border-radius:50%;background:var(--gold)}
-.phase[data-p=active] .dot{background:var(--green)}.phase[data-p=ended] .dot{background:var(--muted)}
-.deadline{margin-top:4px;font-size:13px;color:var(--muted)}
-.countdown{text-align:right}.countdown small{display:block;color:var(--muted);font-size:12px}
-.countdown strong{color:var(--navy);font-size:18px;font-weight:600;font-variant-numeric:tabular-nums}
-.auth{margin-top:24px;background:var(--white);border:1px solid var(--line);border-left:3px solid var(--navy);border-radius:6px;padding:18px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.auth p{font-size:14px;color:var(--muted)}.auth strong{color:var(--ink)}
-.layout{display:grid;grid-template-columns:minmax(0,1fr) 352px;gap:32px;align-items:start;margin-top:32px}
-.section-heading{display:flex;gap:12px;align-items:center;margin-bottom:8px}
-.step{display:grid;place-items:center;width:26px;height:26px;border:1px solid var(--line-strong);border-radius:50%;font-size:12px;color:var(--navy);flex:none}
-h2,legend{font-size:19px;font-weight:650;letter-spacing:-.3px}
-.help{color:var(--muted);font-size:14px;margin-bottom:24px}
-fieldset{padding:0;border:0;margin:0;min-width:0}legend{padding:0}
-.list{display:grid;gap:12px}
-.candidate{display:grid;grid-template-columns:80px minmax(0,1fr) 24px;gap:20px;align-items:center;padding:22px;min-height:137px;border:1px solid var(--line);border-radius:6px;background:var(--white);cursor:pointer;transition:background .15s,border-color .15s}
-.candidate:hover:not(.off){border-color:var(--line-strong)}
-.candidate.sel{border-color:var(--navy);background:var(--selected);box-shadow:inset 3px 0 var(--navy)}
-.candidate.off{cursor:default}
-.portrait{display:grid;place-items:center;width:80px;height:88px;background:#e9edf0;border-radius:3px;overflow:hidden;color:#536779;font-size:24px}
-.portrait img{grid-area:1/1;width:100%;height:100%;object-fit:cover}.portrait span{grid-area:1/1}
-.cname{display:block;font-size:19px;font-weight:600;line-height:1.35;overflow-wrap:anywhere}
-.cparty{display:block;margin-top:5px;color:var(--muted);font-size:14px}
-.candidate input{appearance:none;width:24px;height:24px;margin:0;border:1.5px solid var(--line-strong);border-radius:50%;background:var(--white);display:grid;place-items:center}
-.candidate input:checked{border:2px solid var(--navy)}
-.candidate input:checked::before{content:"";width:12px;height:12px;background:var(--navy);border-radius:50%}
-.note{color:var(--muted);font-size:13px;margin-top:18px}
-.confirmation{background:var(--white);border:1px solid var(--line);border-radius:6px;padding:24px;position:sticky;top:24px}
-.choice{border-block:1px solid var(--line);padding-block:19px;margin:22px 0 0;min-height:108px;overflow-wrap:anywhere}
-.choice-label{font-size:12px;color:var(--muted);margin-bottom:8px}.choice-name{font-size:17px;font-weight:600}
-.choice-party{color:var(--muted);font-size:13px;margin-top:4px}.empty{font-size:15px;font-weight:400;color:var(--muted)}
-.button{display:inline-flex;justify-content:center;align-items:center;min-height:48px;border:1px solid var(--navy);border-radius:4px;padding:11px 16px;background:var(--navy);color:var(--white);font-size:15px;font-weight:600;text-decoration:none}
-.button:hover:not(:disabled){background:var(--navy-dark)}
-.button:disabled{background:#e7ebee;border-color:#e7ebee;color:var(--muted);cursor:not-allowed}
-.vote-button{width:100%;margin-top:20px}
-.action-help{font-size:13px;color:var(--muted);margin-top:12px}
-.message{margin-top:18px;padding:14px;font-size:14px;border:1px solid var(--line);border-radius:4px;overflow-wrap:anywhere}
-.message.success{color:var(--green);border-color:#a3c6b3;background:var(--green-bg)}
-.message.error{color:var(--red);border-color:#dbb3af;background:var(--red-bg)}
-.message.info{color:var(--navy);background:var(--selected)}
-.site-footer{border-top:1px solid var(--line);padding-block:26px 32px}
-.footer-title{font-size:14px;font-weight:600;color:var(--navy)}.footer-note{font-size:13px;color:var(--muted);max-width:480px;margin-top:5px}
-@media(max-width:960px){.layout{grid-template-columns:minmax(0,1fr)}.confirmation{position:static}.candidate{grid-template-columns:64px minmax(0,1fr) 24px;padding:18px;gap:14px}.portrait{width:64px;height:76px}.cname{font-size:17px}}
-@media(max-width:760px){.header-note{display:none}.title-row{flex-direction:column;align-items:flex-start}.schedule{flex-direction:column;align-items:flex-start}.countdown{text-align:left}}
-@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+body{margin:0;background:#f4f5f3;color:#202a35;font:16px/1.5 system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+.w{max-width:760px;margin:0 auto;padding:0 20px}
+header{background:#17324d;color:#fff;border-top:3px solid #d9b44a;padding:24px 0}
+h1{margin:0;font-size:26px}header p{margin:6px 0 0;color:#d2dce5;font-size:14px}
+main{padding:24px 20px 48px}
+.note{color:#586573;font-size:14px}
+#status{font-weight:600;color:#17324d;margin:16px 0}
+label{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid #d9dee3;border-radius:6px;padding:14px 16px;margin-bottom:10px;cursor:pointer}
+label:has(input:checked){border-color:#17324d;background:#f0f4f8}
+label img{width:56px;height:62px;object-fit:cover;border-radius:3px;background:#e9edf0}
+label b{display:block}label span{color:#586573;font-size:14px}
+input[type=radio]{width:20px;height:20px;margin:0 0 0 auto;flex:none}
+button{font:inherit;font-weight:600;padding:12px 22px;border:0;border-radius:4px;background:#17324d;color:#fff;cursor:pointer}
+button:disabled{background:#e7ebee;color:#586573;cursor:not-allowed}
+#msg{margin-top:14px;padding:12px;border-radius:4px;background:#f0f4f8}
+#msg.ok{background:#edf5ef;color:#246346}#msg.err{background:#fcf0ee;color:#9e302b}
+.small{margin-top:40px;font-size:13px}.small a{color:#586573}
+#admin{margin-top:16px;padding:18px;background:#fff;border:1px solid #d9dee3;border-radius:6px}
+#admin input{font:inherit;padding:9px 10px;border:1px solid #7e8e9b;border-radius:4px;margin-right:8px}
+.bar{height:8px;background:#e9edf0;border-radius:3px;margin:4px 0 12px}.bar i{display:block;height:8px;background:#17324d;border-radius:3px}
 </style>
 </head>
 <body>
-<header class="site-header"><div class="container header-inner">
-  <div><span class="brand-name">Kherson RP</span><span class="brand-caption">Платформа голосування · рольовий проєкт</span></div>
-  <p class="header-note">Онлайн-опитування<br>учасників проєкту</p>
-</div></header>
-<main class="container">
-  <div class="eyebrow">Голосування учасників</div>
-  <div class="title-row"><h1>Вибори Президента України</h1><span class="round-tag" id="roundTag"></span></div>
-  <p class="intro">Голосування в межах рольового проєкту Kherson RP. Не є офіційними державними виборами.</p>
-
-  <section class="schedule">
-    <div><p class="phase" id="phase" data-p="waiting"><span class="dot"></span><span id="phaseText">Завантаження…</span></p><p class="deadline" id="period"></p></div>
-    <div class="countdown" id="cd" hidden><small id="cdLabel"></small><strong id="cdTime">—</strong></div>
-  </section>
-
-  <div class="layout">
-    <section>
-      <fieldset id="fs">
-        <legend><span class="section-heading"><span class="step">1</span>Оберіть кандидата</span></legend>
-        <p class="help">Один кандидат — один вибір. Натисніть на рядок із його ім’ям.</p>
-        <div class="list" id="list"><p class="help">Завантаження кандидатів…</p></div>
-      </fieldset>
-      <p class="note">Перед надсиланням можна змінити свій вибір. Голос анонімний: у базі зберігаються лише лічильники.</p>
-    </section>
-    <aside class="confirmation">
-      <h2 class="section-heading"><span class="step">2</span>Підтвердьте вибір</h2>
-      <div class="choice" aria-live="polite"><p class="choice-label">Ваш вибір</p><p class="choice-name empty" id="cName">Кандидата ще не обрано</p><p class="choice-party" id="cParty" hidden></p></div>
-      <button type="button" class="button vote-button" id="voteBtn" disabled>Проголосувати</button>
-      <p class="action-help" id="help"></p>
-      <div class="message" id="msg" role="status" aria-live="polite" hidden></div>
-    </aside>
+<header><div class="w"><h1>Вибори Президента України</h1><p id="tour"></p></div></header>
+<main class="w">
+  <p class="note">Голосування в межах рольового проєкту Kherson RP. Не є офіційними державними виборами.</p>
+  <p id="status"></p>
+  <div id="list">Завантаження…</div>
+  <button id="btn" disabled>Проголосувати</button>
+  <p id="msg" hidden></p>
+  <p class="small"><a href="#" id="adm">Адміністратор</a></p>
+  <div id="admin" hidden>
+    <div id="login"><input type="password" id="pass" placeholder="Пароль" autocomplete="off"><button id="go">Увійти</button></div>
+    <div id="res"></div>
   </div>
-  <section id="admin" hidden style="margin-top:40px;background:var(--white);border:1px solid var(--line);border-radius:6px;padding:24px">
-    <h2>Панель адміністратора</h2>
-    <div id="adminLogin" style="margin-top:14px"><p class="help" style="margin-bottom:12px">Введіть код доступу.</p>
-      <input type="password" id="adminCode" autocomplete="off" aria-label="Код доступу" style="font:inherit;padding:11px 12px;border:1px solid var(--line-strong);border-radius:4px;margin-right:8px">
-      <button type="button" class="button" id="adminGo">Увійти</button></div>
-    <div id="adminData" hidden style="margin-top:18px"></div>
-    <div class="message error" id="adminErr" hidden></div>
-  </section>
 </main>
-<footer class="site-footer"><div class="container"><p class="footer-title">Kherson RP · рольовий проєкт</p><p class="footer-note">Онлайн-опитування учасників. Ця платформа не представляє державні виборчі органи та не проводить офіційних виборів.</p><p class="footer-note"><a href="#" id="adminLink" style="color:var(--muted)">Адміністратор</a></p></div></footer>
-
 <script>
-'use strict';
-const API = 'https://script.google.com/macros/s/AKfycbx_g3AIoxfOssqW94FKjnS5y7aJegI5yHHqDNvPDeBM5hDs3tBJ8D8k7O3ZvalJQWt4/exec';
-const VOTED_KEY = 'kh_voted_tour_1', ID_KEY = 'kh_client_id';
-const $ = id => document.getElementById(id);
-const S = { cands: [], sel: null, voted: false, start: 0, end: 0, offset: 0, busy: false, ready: false };
+const API = 'ВСТАВТЕ_ПОСИЛАННЯ_З_GOOGLE';
+const $ = (id) => document.getElementById(id);
+const S = { sel: null, voted: false, busy: false, start: 0, end: 0, off: 0, tour: 1 };
 const ERR = {
-  not_started: 'Голосування ще не розпочалося.', ended: 'Голосування завершено.',
-  already_voted: 'З цього пристрою або мережі вже проголосували.', bad_candidate: 'Такого кандидата немає. Оновіть сторінку.',
-  bad_request: 'Некоректний запит. Оновіть сторінку.', ip: 'Не вдалося визначити IP-адресу. Вимкніть блокувальники й спробуйте ще раз.', server: 'Помилка сервера. Спробуйте пізніше.'
+  not_started: 'Голосування ще не розпочалося.', ended: 'Голосування завершено.', already_voted: 'З цього пристрою або мережі вже проголосували.',
+  bad_candidate: 'Такого кандидата немає. Оновіть сторінку.', bad_request: 'Некоректний запит. Оновіть сторінку.', server: 'Помилка сервера. Спробуйте пізніше.',
+  wrong_code: 'Доступ заборонено.', locked: 'Забагато спроб. Зачекайте 15 хвилин.'
 };
-const store = { get(k){ try { return localStorage.getItem(k); } catch { return null; } }, set(k,v){ try { localStorage.setItem(k,v); } catch {} } };
-const clientId = store.get(ID_KEY) || ((crypto.randomUUID && crypto.randomUUID()) || 'id-' + Date.now() + Math.random().toString(36).slice(2));
-store.set(ID_KEY, clientId);
-const now = () => Date.now() + S.offset;
-const phase = () => !S.start ? 'waiting' : now() < S.start ? 'waiting' : now() >= S.end ? 'ended' : 'active';
-const fmt = ts => new Date(ts).toLocaleString('uk-UA', { dateStyle: 'short', timeStyle: 'short' });
-function msg(text, type = 'info') { $('msg').textContent = text; $('msg').className = 'message ' + type; $('msg').hidden = false; }
+const store = {
+  get: (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } },
+  set: (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} }
+};
+let cid = store.get('kh_id');
+if (!cid) { cid = crypto.randomUUID ? crypto.randomUUID() : 'id' + Date.now() + Math.random().toString(36).slice(2); store.set('kh_id', cid); }
 
-async function api(action, data = {}) {
-  const res = await fetch(API, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ action, ...data }), redirect: 'follow' });
-  const json = await res.json().catch(() => ({}));
-  if (json.error || !res.ok) throw Object.assign(new Error(json.error || 'server'), { code: json.error || 'server' });
-  return json;
+async function api(action, data) {
+  const r = await fetch(API, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(Object.assign({ action }, data)) });
+  const j = await r.json();
+  if (j.error) throw Object.assign(new Error(j.error), { code: j.error });
+  return j;
 }
 async function getIp() {
-  try { const r = await fetch('https://api64.ipify.org?format=json', { cache: 'no-store' }); return (await r.json()).ip; }
-  catch { throw Object.assign(new Error('ip'), { code: 'ip' }); }
+  try {
+    const c = new AbortController(); setTimeout(() => c.abort(), 2500);
+    const r = await fetch('https://api64.ipify.org?format=json', { signal: c.signal });
+    return (await r.json()).ip || '';
+  } catch (e) { return ''; }
 }
+const fmt = (t) => new Date(t).toLocaleString('uk-UA', { dateStyle: 'short', timeStyle: 'short' });
+function msg(text, cls) { const m = $('msg'); m.textContent = text; m.className = cls || ''; m.hidden = false; }
 
 function render() {
-  const p = phase(), active = p === 'active', locked = !active || S.voted || S.busy;
-  $('phase').dataset.p = p;
-  $('phaseText').textContent = !S.ready ? 'Завантаження…' : p === 'waiting' ? 'Голосування ще не розпочалося' : p === 'active' ? 'Голосування триває' : 'Голосування завершено';
-  document.querySelectorAll('.candidate').forEach(l => { const i = l.querySelector('input'); i.disabled = locked; l.classList.toggle('off', locked); l.classList.toggle('sel', i.value === S.sel); });
-  const c = S.cands.find(x => x.id === S.sel);
-  $('cName').textContent = c ? c.name : 'Кандидата ще не обрано'; $('cName').classList.toggle('empty', !c);
-  $('cParty').textContent = c ? c.party : ''; $('cParty').hidden = !c || !c.party;
-  $('voteBtn').disabled = locked || !S.sel;
-  $('voteBtn').textContent = S.busy ? 'Надсилання голосу…' : S.voted ? 'Голос прийнято' : p === 'ended' ? 'Голосування завершено' : 'Проголосувати';
-  $('help').textContent = S.voted ? 'Повторне голосування неможливе.' : !S.ready ? '' : p === 'ended' ? 'Прийом голосів завершено.' : p === 'waiting' ? 'Голосування відкриється у зазначений час.' : !S.sel ? 'Оберіть одного кандидата зі списку.' : 'Перевірте свій вибір перед надсиланням.';
+  const n = Date.now() + S.off, p = n < S.start ? 0 : n >= S.end ? 2 : 1;
+  const ok = p === 1 && !S.voted && !S.busy;
+  $('status').textContent = S.voted ? 'Ваш голос прийнято. Дякуємо!' : p === 0 ? 'Голосування почнеться ' + fmt(S.start) : p === 2 ? 'Голосування завершено' : 'Голосування триває до ' + fmt(S.end);
+  document.querySelectorAll('input[name=c]').forEach((i) => { i.disabled = !ok; });
+  $('btn').disabled = !ok || !S.sel;
 }
-function tick() {
-  if (!S.ready) return;
-  const p = phase(); render();
-  $('cd').hidden = p === 'ended';
-  if (p !== 'ended') {
-    const r = Math.max(0, (p === 'waiting' ? S.start : S.end) - now()), pad = n => String(n).padStart(2, '0');
-    $('cdLabel').textContent = p === 'waiting' ? 'До початку' : 'До завершення';
-    $('cdTime').textContent = `${Math.floor(r / 864e5)} дн. ${pad(Math.floor(r / 36e5) % 24)}:${pad(Math.floor(r / 6e4) % 60)}:${pad(Math.floor(r / 1e3) % 60)}`;
-  }
-}
-function renderCandidates() {
-  const list = $('list'); list.replaceChildren();
-  for (const c of S.cands) {
-    const label = document.createElement('label'); label.className = 'candidate';
-    const por = document.createElement('span'); por.className = 'portrait'; por.setAttribute('aria-hidden', 'true');
-    const ini = document.createElement('span'); ini.textContent = c.name.split(/\s+/).filter(Boolean).slice(0, 2).map(w => Array.from(w)[0]).join('').toUpperCase(); por.append(ini);
-    if (/^https:\/\//.test(c.photo_url || '')) { const img = document.createElement('img'); img.alt = ''; img.loading = 'lazy'; img.onerror = () => img.remove(); img.src = c.photo_url; por.append(img); }
-    const copy = document.createElement('span');
-    const n = document.createElement('span'); n.className = 'cname'; n.textContent = c.name;
-    const pt = document.createElement('span'); pt.className = 'cparty'; pt.textContent = c.party; copy.append(n, pt);
-    const r = document.createElement('input'); r.type = 'radio'; r.name = 'candidate'; r.value = c.id; r.setAttribute('aria-label', c.name);
+
+function showList(cands) {
+  const list = $('list'); list.textContent = '';
+  for (const c of cands) {
+    const l = document.createElement('label'), box = document.createElement('div');
+    if (/^https:\/\//.test(c.photo_url)) { const im = document.createElement('img'); im.alt = ''; im.src = c.photo_url; im.onerror = () => im.remove(); l.append(im); }
+    const b = document.createElement('b'); b.textContent = c.name;
+    const s = document.createElement('span'); s.textContent = c.party;
+    box.append(b, s);
+    const r = document.createElement('input'); r.type = 'radio'; r.name = 'c'; r.value = c.id;
     r.onchange = () => { S.sel = c.id; render(); };
-    label.append(por, copy, r); list.append(label);
+    l.append(box, r); list.append(l);
   }
 }
-async function init() {
-  try {
-    const cfg = await api('config');
-    S.cands = cfg.candidates; S.start = cfg.start; S.end = cfg.end; S.offset = cfg.now - Date.now(); S.ready = true;
-    S.tour = cfg.tour || 1; S.voted = store.get(VOTED_KEY + S.tour) === '1';
-    $('roundTag').textContent = ({ 1: 'Перший тур', 2: 'Другий тур' })[S.tour] || ('Тур ' + S.tour);
-    $('period').textContent = `Період: ${fmt(S.start)} — ${fmt(S.end)}`;
-    renderCandidates();
-  } catch { $('list').textContent = 'Не вдалося завантажити кандидатів. Оновіть сторінку.'; }
-  if (S.voted) msg('У цьому браузері вже збережено факт голосування. Дякуємо за участь.', 'info');
-  tick(); setInterval(tick, 1000);
-}
-$('voteBtn').onclick = async () => {
-  if (S.busy || S.voted || !S.sel) return;
+
+$('btn').onclick = async () => {
   S.busy = true; $('msg').hidden = true; render();
   try {
-    await api('vote', { candidate_id: S.sel, client_id: clientId, client_ip: await getIp() });
-    S.voted = true; store.set(VOTED_KEY + S.tour, '1'); msg('Ваш голос прийнято. Дякуємо за участь!', 'success');
+    await api('vote', { candidate_id: S.sel, client_id: cid, client_ip: await getIp() });
+    S.voted = true; store.set('kh_voted_' + S.tour, '1'); msg('Ваш голос прийнято. Дякуємо за участь!', 'ok');
   } catch (e) {
-    if (e.code === 'already_voted') { S.voted = true; store.set(VOTED_KEY + S.tour, '1'); }
-    msg(ERR[e.code] || 'Не вдалося надіслати голос. Перевірте з’єднання та спробуйте ще раз.', 'error');
-  } finally { S.busy = false; render(); }
-};
-let adminCode = '';
-const ADM_ERR = { wrong_code: 'Доступ заборонено.', ip: 'Не вдалося визначити IP-адресу.', locked: 'Забагато спроб. Зачекайте 15 хвилин.', server: 'Помилка сервера.' };
-$('adminLink').onclick = e => { e.preventDefault(); $('admin').hidden = !$('admin').hidden; };
-function showAdmin(d) {
-  const box = $('adminData'); box.replaceChildren(); box.hidden = false;
-  const total = document.createElement('p'); total.style.fontWeight = '600'; total.textContent = 'Всього голосів: ' + d.total; box.append(total);
-  for (const c of d.candidates) {
-    const pct = d.total ? Math.round(c.votes * 100 / d.total) : 0;
-    const row = document.createElement('div'); row.style.marginTop = '14px';
-    const t = document.createElement('div'); t.textContent = `${c.name} (${c.party}) — ${c.votes} (${pct}%)`;
-    const bar = document.createElement('div'); bar.style.cssText = 'height:10px;background:#e9edf0;border-radius:3px;margin-top:6px';
-    const fill = document.createElement('div'); fill.style.cssText = `height:10px;border-radius:3px;background:var(--navy);width:${pct}%`; bar.append(fill);
-    row.append(t, bar); box.append(row);
+    if (e.code === 'already_voted') { S.voted = true; store.set('kh_voted_' + S.tour, '1'); }
+    msg(ERR[e.code] || 'Не вдалося надіслати голос. Спробуйте ще раз.', 'err');
   }
-  const act = document.createElement('div'); act.style.cssText = 'margin-top:18px;display:flex;gap:8px';
-  const re = document.createElement('button'); re.className = 'button button-secondary'; re.textContent = 'Оновити'; re.onclick = loadAdmin;
-  const out = document.createElement('button'); out.className = 'button'; out.textContent = 'Вийти'; out.onclick = () => { adminCode = ''; box.hidden = true; $('adminLogin').hidden = false; };
-  act.append(re, out); box.append(act);
-}
-async function loadAdmin() {
-  $('adminErr').hidden = true;
-  try { showAdmin(await api('admin', { code: adminCode, client_ip: await getIp() })); $('adminLogin').hidden = true; }
-  catch (e) { adminCode = ''; $('adminErr').textContent = ADM_ERR[e.code] || ADM_ERR.server; $('adminErr').hidden = false; }
-}
-$('adminGo').onclick = () => { adminCode = $('adminCode').value; $('adminCode').value = ''; loadAdmin(); };
+  S.busy = false; render();
+};
 
-init();
+$('adm').onclick = (e) => { e.preventDefault(); $('admin').hidden = !$('admin').hidden; };
+$('go').onclick = async () => {
+  const pass = $('pass').value; $('pass').value = '';
+  try {
+    const d = await api('admin', { code: pass, client_ip: await getIp() });
+    const res = $('res'); res.textContent = '';
+    const t = document.createElement('p'); t.textContent = 'Всього голосів: ' + d.total; t.style.fontWeight = '600'; res.append(t);
+    for (const c of d.candidates) {
+      const pct = d.total ? Math.round(c.votes * 100 / d.total) : 0;
+      const row = document.createElement('div'); row.textContent = c.name + ' (' + c.party + ') — ' + c.votes + ' (' + pct + '%)';
+      const bar = document.createElement('div'); bar.className = 'bar'; const f = document.createElement('i'); f.style.width = pct + '%'; bar.append(f);
+      res.append(row, bar);
+    }
+    $('login').hidden = true;
+  } catch (e) { $('res').textContent = ERR[e.code] || ERR.server; }
+};
+
+(async () => {
+  try {
+    const c = await api('config');
+    S.start = c.start; S.end = c.end; S.tour = c.tour; S.off = c.now - Date.now();
+    S.voted = store.get('kh_voted_' + S.tour) === '1';
+    $('tour').textContent = ({ 1: 'Перший тур', 2: 'Другий тур' })[S.tour] || 'Тур ' + S.tour;
+    showList(c.candidates);
+  } catch (e) { $('list').textContent = 'Не вдалося завантажити кандидатів. Оновіть сторінку.'; }
+  render(); setInterval(render, 10000);
+})();
 </script>
 </body>
 </html>
